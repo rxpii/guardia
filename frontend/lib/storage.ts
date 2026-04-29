@@ -1,7 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const LOCAL_PATH = path.join(process.cwd(), "user-profile.json");
+const LOCAL_PATH = path.join(
+  process.env.VERCEL ? "/tmp" : process.cwd(),
+  "user-profile.json"
+);
 
 function readProfile(): Record<string, unknown> {
   try {
